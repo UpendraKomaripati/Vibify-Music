@@ -6,6 +6,13 @@ const { connectDB } = require("./Database.js")
 
 dotenv.config();
 const app = express()
+
+
+
+//  USING MIDDLEWARES
+app.use(express.json());
+
+
 const port = process.env.PORT
 
 app.use("/api/user", userRoutes)
