@@ -2,7 +2,7 @@ const express = require("express")
 const dotenv = require("dotenv")
 const userRoutes = require("./Routes/userRoutes.js")
 const { connectDB } = require("./Database.js")
-
+const cookieParser=require("cookie-parser")
 
 dotenv.config();
 const app = express()
@@ -11,6 +11,7 @@ const app = express()
 
 //  USING MIDDLEWARES
 app.use(express.json());
+app.use(cookieParser());
 
 
 const port = process.env.PORT
