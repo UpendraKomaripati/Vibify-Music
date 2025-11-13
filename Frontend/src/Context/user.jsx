@@ -33,6 +33,28 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+    // ✅ LOGIN USER
+  async function LoginUser( email, password, navigate) {
+    setBtnLoading(true);
+
+    try {
+      const { data } = await axios.post("/api/user/login", {
+        email,
+        password,
+      });
+
+      toast.success(data.message);
+      setUser(data.user);
+      setIsAuth(true);
+      setBtnLoading(false);
+
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong");
+      setBtnLoading(false);
+    }
+  }
+
   // ✅ FETCH CURRENT USER
   async function fetchUser() {
     try {
@@ -47,14 +69,12 @@ export const UserProvider = ({ children }) => {
       setLoading(false);
     }
   }
-useEffect (()=>{
-
-},[])
   return (
     <UserContext.Provider
       value={{
         registerUser,
         fetchUser,
+        LoginUser,
         user,
         isAuth,
         btnLoading,
@@ -69,5 +89,4 @@ useEffect (()=>{
 
 export default UserContext;
 
-// ✅ The hook you use inside components
 export const UserData = () => useContext(UserContext);

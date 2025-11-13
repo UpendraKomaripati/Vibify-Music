@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { SongData } from "../context/Song";
-import { UserData } from "../Context/user";
+import { UserData } from "../Context/User";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,13 +11,15 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-//   const { fetchSongs, fetchAlbums } = SongData();
+  //   const { fetchSongs, fetchAlbums } = SongData();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    registerUser(name, email, password, navigate, );
+    registerUser(name, email, password, navigate,);
   };
+
+
   return (
     <div className="flex items-center justify-center h-screen max-h-screen">
       <div className="bg-black text-white p-8 rounded-lg shadow-lg max-w-md w-full">
@@ -51,7 +53,6 @@ const Register = () => {
               required
             />
           </div>
-
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Password</label>
             <input
