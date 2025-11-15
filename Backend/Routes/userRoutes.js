@@ -9,6 +9,7 @@ router.post("/register",registerUser)
 router.post("/login",loginUser)
 router.get("/me",isAuth,myProfile)
 router.get("/logout",isAuth,LogoutUser)
+router.get("/register",isAuth,LogoutUser)
 
 
 module.exports = router
